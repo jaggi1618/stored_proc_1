@@ -1071,7 +1071,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: GETDATE()
+            transform: "{{current_timestamp}}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -1091,7 +1091,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: CURRENT_USER()
+            transform: "{{proc_name}}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -1111,7 +1111,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: GETDATE()
+            transform: "{{current_timestamp}}"
         systemColumnType: None
       - acceptedValues:
           strictMatch: true
@@ -1131,7 +1131,7 @@ operation:
           - columnReferences:
               - columnCounter: "0"
                 stepCounter: "0"
-            transform: CURRENT_USER()
+            transform: "{{proc_name}}"
         systemColumnType: None
     cteString: ""
     enabledColumnTestIDs: []

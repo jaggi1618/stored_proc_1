@@ -5,11 +5,10 @@ operation:
   config:
     postSQL: ""
     preSQL: |-
-      -- Soft-delete if record no longer exists in source
       UPDATE Alliant_DW_stage.dbo.DIM_DW_CLIENT_BENCHMARKING_CLIENT_STAGING 
-      SET DW_DATE_DELETED = CURRENT_TIMESTAMP(),
-          DW_DATE_UPDATED = CURRENT_TIMESTAMP(),
-          DW_UPDATE_USER = 'COALESCE_PIPELINE'
+      SET DW_DATE_DELETED = {{current_timestamp}},
+          DW_DATE_UPDATED = {{current_timestamp}},
+          DW_UPDATE_USER = {{ proc_name }}
       WHERE DW_DATE_DELETED IS NULL
         AND (SOURCE_SYSTEM_CLIENT_ID, SOURCE_SYSTEM_POLICY_LINE_ID) NOT IN (
           SELECT SOURCE_SYSTEM_CLIENT_ID, SOURCE_SYSTEM_POLICY_LINE_ID 
